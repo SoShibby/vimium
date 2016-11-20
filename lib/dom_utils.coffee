@@ -272,6 +272,23 @@ DomUtils =
       # but Webkit will. Dispatching a click on an input box does not seem to focus it; we do that separately
       element.dispatchEvent(mouseEvent)
 
+  selectText: (element, startIndex, endIndex) ->
+    text = element.childNodes[0]
+    selection = window.getSelection()
+    range = document.createRange()
+    range.setStart text, startIndex
+    range.setEnd text, endIndex
+    selection.removeAllRanges()
+    selection.addRange range
+
+  getSelectedText: ->
+    if window.getSelection
+        text = window.getSelection().toString();
+    else if document.selection && document.selection.type != "Control"
+        text = document.selection.createRange().text;
+
+    return text;
+
   addFlashRect: (rect) ->
     flashEl = @createElement "div"
     flashEl.classList.add "vimiumReset"

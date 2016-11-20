@@ -180,6 +180,7 @@ initializePreDomReady = ->
     runInTopFrame: ({sourceFrameId, registryEntry}) ->
       Utils.invokeCommandString registryEntry.command, sourceFrameId, registryEntry if DomUtils.isTopFrame()
     linkHintsMessage: (request) -> HintCoordinator[request.messageType] request
+    textHintsMessage: (request) -> TextHintCoordinator[request.messageType] request
 
   chrome.runtime.onMessage.addListener (request, sender, sendResponse) ->
     # Some requests intended for the background page are delivered to the options page too; ignore them.
@@ -236,6 +237,7 @@ Frame =
   addEventListener: (handler, callback) -> @listeners[handler] = callback
   postMessage: (handler, request = {}) -> @port.postMessage extend request, {handler}
   linkHintsMessage: (request) -> HintCoordinator[request.messageType] request
+  textHintsMessage: (request) -> TextHintCoordinator[request.messageType] request
   registerFrameId: ({chromeFrameId}) ->
     frameId = window.frameId = chromeFrameId
     # We register a frame immediately only if it is focused or its window isn't tiny.  We register tiny

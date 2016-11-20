@@ -173,6 +173,7 @@ Commands =
       "LinkHints.activateModeToDownloadLink",
       "LinkHints.activateModeToOpenIncognito",
       "LinkHints.activateModeToCopyLinkUrl",
+      "TextHints.activateMode",
       "goPrevious",
       "goNext",
       "nextFrame",
@@ -268,6 +269,8 @@ defaultKeyMappings =
 
   "gi": "focusInput"
 
+  "q": "TextHints.activateMode"
+
   "f": "LinkHints.activateMode"
   "F": "LinkHints.activateModeToOpenInNewTab"
   "<a-f>": "LinkHints.activateModeWithQueue"
@@ -355,6 +358,8 @@ commandDescriptions =
   enterVisualLineMode: ["Enter visual line mode", { noRepeat: true }]
 
   focusInput: ["Focus the first text input on the page"]
+
+  "TextHints.activateMode": ["Select text in the current tab"]
 
   "LinkHints.activateMode": ["Open a link in the current tab"]
   "LinkHints.activateModeToOpenInNewTab": ["Open a link in a new tab"]
