@@ -366,6 +366,15 @@ class AlphabetHints
       marker.hintString = hintStrings[idx]
       marker.innerHTML = spanWrap(marker.hintString.toUpperCase()) if marker.isLocalMarker
 
+#
+# Make each hint character a span, so that we can highlight the typed characters as you type them.
+#
+spanWrap = (hintString) ->
+  innerHTML = []
+  for char in hintString
+    innerHTML.push("<span class='vimiumReset'>" + char + "</span>")
+  innerHTML.join("")
+
   #
   # Returns a list of hint strings which will uniquely identify the given number of links. The hint strings
   # may be of different lengths.
@@ -396,3 +405,4 @@ class AlphabetHints
 
 root = exports ? window
 root.TextHints = TextHints
+root.TextHintCoordinator = TextHintCoordinator
